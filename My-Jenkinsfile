@@ -2,7 +2,7 @@ pipeline {
     // add your slave label name
     agent { label 'Agent'}
     tools{
-        maven 'maven_path'
+        maven 'maven'
     }
     stages {
         stage ('Checkout_SCM') {
@@ -24,7 +24,7 @@ pipeline {
 
             steps {
 	      sshagent(['My-Tomcat-server']) {
-              sh "scp -o StrictHostKeyChecking=no  target/maven-web-application.war  ec2-user@13.201.98.162:/opt/tomcat11/webapps"
+              sh "scp -o StrictHostKeyChecking=no  target/maven-web-application.war  ec2-user@65.0.11.68:/opt/tomcat11/webapps"
 	      }
          }
         }
